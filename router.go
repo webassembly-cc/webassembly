@@ -12,6 +12,7 @@ func initRouter() *mux.Router {
 	user := new(controllers.UserCtrl)
 
 	router.HandleFunc("/api/user/regist", user.Regist)
+	router.HandleFunc("/api/user/info", user.Info)
 	router.HandleFunc("/api/user/login", user.Login)
 
 	//article

@@ -1,24 +1,36 @@
 package mongo
 
-import "net/http"
+import (
+	"gopkg.in/mgo.v2"
+	"gopkg.in/mgo.v2/bson"
+)
 
 //用户相关的
-//Login
-func (c *UserController) Login(w http.ResponseWriter, r *http.Request) {
-
+type User struct {
+	UUID     string
+	Name     string
+	Password string
 }
 
-//Regist
-func (c *UserController) Regist(w http.ResponseWriter, r *http.Request) {
+var user *mgo.Collection
 
+func init() {
+	initMongo()
+	user = db.C("user")
 }
 
-//list user
-func (c *UserController) List(w http.ResponseWriter, r *http.Request) {
-
+//Add user
+func (m *User) Insert() (err error) {
+	err = user.Insert(m)
+	return
 }
 
-//update user
-func (c *UserController) Update(w http.ResponseWriter, r *http.Request) {
+//find by UUID
+func (m *User) GetByUUID() error {
+	return user.Find(bson.M{"UUID": m.UUID}).One(m)
+}
 
+//find by Name
+func (m *User) GetByName() error {
+	return user.Find(bson.M{"Name": m.Name}).One(m)
 }

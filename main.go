@@ -7,6 +7,8 @@ import (
 func main() {
 	n := negroni.Classic()
 
+	n.UseHandler(initRouter())
+
 	n.Run(":9000")
 
 }
