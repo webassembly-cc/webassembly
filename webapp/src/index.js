@@ -1,6 +1,7 @@
 import './index.html';
 import './index.css';
 import dva from 'dva';
+import 'antd/dist/antd.css';
 
 // 1. Initialize
 const app = dva();
@@ -13,6 +14,7 @@ const app = dva();
 
 // 4. Router
 app.router(require('./router'));
+app.model(require('./models/article'));
 
 // 5. Start
 app.start('#root');

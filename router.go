@@ -19,6 +19,6 @@ func initRouter() *mux.Router {
 	article := new(controllers.ArticleCtrl)
 	router.HandleFunc("/api/article/list", article.List)
 	router.HandleFunc("/api/article/insert", article.Insert)
-
+	router.HandleFunc("/api/article/update", article.Update)
 	return router
 }

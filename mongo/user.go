@@ -1,6 +1,8 @@
 package mongo
 
 import (
+	"log"
+
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 )
@@ -17,6 +19,7 @@ var user *mgo.Collection
 func init() {
 	initMongo()
 	user = db.C("user")
+	log.Println("user init")
 }
 
 //Add user
